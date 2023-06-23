@@ -16,5 +16,10 @@ pipeline{
                 sh 'mvn package'
             }
         }
+        stage('sonarqube analysis'){
+            steps{
+                
+            }
+        }
     }
 }
