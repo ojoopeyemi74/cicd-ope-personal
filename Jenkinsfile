@@ -4,6 +4,8 @@ pipeline{
     }
     tools{
         maven 'maven3'
+
+        git 'git'
     }
 
     stages{
