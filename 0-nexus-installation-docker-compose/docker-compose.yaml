@@ -1,0 +1,16 @@
+version: '3'
+services:
+  nexus:
+    image: sonatype/nexus3:latest
+    ports:
+      - 8081:8081
+    volumes:
+      - nexus_data:/nexus-data
+    environment:
+      - MAX_HEAP=2g
+      - MIN_HEAP=1g
+      - JAVA_OPTS=-XX:MaxDirectMemorySize=2g
+    restart: always
+
+volumes:
+  nexus_data:
