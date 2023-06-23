@@ -61,5 +61,12 @@ pipeline{
             sh " docker image tag $JOB_NAME:v1.$BUILD_ID opeyemiojo/$JOB_NAME:latest"
         }
     }
+    stage('push image to dockerhub'){
+        steps{
+            withCredentials([string(credentialsId: 'dockerhub-api-token', variable: 'DOCKERHUB_CRED')]) {
+                 sh 'docker login -u opeyemiojo -p $DOCKERHUB_CRED'
+           }
+        }
+    }
 }
 }
