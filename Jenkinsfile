@@ -1,21 +1,21 @@
 pipeline{
     agent any
      
-    tools{
-        maven 'maven3'
-    }
+    // tools{
+    //     maven 'maven3'
+    // }
 
     stages{
-        stage('clean and test: maven'){
-            steps{
-                sh 'mvn clean test'
-            }
-        }
-        stage(' maven package'){
-            steps{
-                sh 'mvn package'
-            }
-        }
+    //     stage('clean and test: maven'){
+    //         steps{
+    //             sh 'mvn clean test'
+    //         }
+    //     }
+    //     stage(' maven package'){
+    //         steps{
+    //             sh 'mvn package'
+    //         }
+    //     }
     //     stage('sonarqube analysis'){
     //         steps{
     //             withSonarQubeEnv(installationName: 'sonarqube-server', credentialsId: 'sonarqube-auth') {
@@ -65,6 +65,8 @@ pipeline{
         steps{
             withCredentials([string(credentialsId: 'dockerhub-api-token', variable: 'DOCKERHUB_CRED')]) {
                  sh 'docker login -u opeyemiojo -p $DOCKERHUB_CRED'
+                 sh 'docker image push opeyemiojo/$JOB_NAME:v1.$BUILD_ID'
+                 sh 'docker image push opeyemiojo/$JOB_NAME:latest'
            }
         }
     }
