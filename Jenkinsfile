@@ -1,5 +1,6 @@
 pipeline{
-    agent any
+    agent 
+        docker { image 'node:18.16.0-alpine' }
      
     tools{
         maven 'maven3'
