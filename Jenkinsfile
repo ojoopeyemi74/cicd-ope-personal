@@ -3,10 +3,9 @@ pipeline{
 
 
     stages{
-        stage('testing webhook'){
+        stage('clean and test: maven'){
             steps{
-                sh 'echo ls -ltra'
-                // sh 'echo pwd'
+                sh 'mvn clean test'
             }
         }
     }
