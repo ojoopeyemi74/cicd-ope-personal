@@ -6,7 +6,7 @@ pipeline{
         stage('testing webhook'){
             steps{
                 sh 'echo ls -ltra'
-                sh 'echo pwd'
+                // sh 'echo pwd'
             }
         }
     }
